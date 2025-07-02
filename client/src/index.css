@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* FM Transmitter specific colors */
+  --radio-dark: hsl(0, 0%, 10%);
+  --radio-panel: hsl(0, 0%, 16%);
+  --radio-green: hsl(120, 100%, 50%);
+  --radio-yellow: hsl(60, 100%, 50%);
+  --radio-red: hsl(0, 100%, 50%);
+  --radio-gray: hsl(0, 0%, 25%);
+  --radio-light-gray: hsl(0, 0%, 38%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-mono antialiased;
+    background: hsl(0, 0%, 0%);
+    color: white;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .toolbar-btn {
+    @apply w-8 h-6 flex items-center justify-center text-xs border;
+    background: var(--radio-gray);
+    border-color: var(--radio-light-gray);
+    color: white;
+  }
+  
+  .toolbar-btn:hover {
+    background: hsl(0, 0%, 31%);
+  }
+  
+  .toolbar-btn-yellow {
+    background: var(--radio-yellow);
+    border-color: var(--radio-yellow);
+    color: black;
+  }
+  
+  .status-btn {
+    @apply h-6 px-2 flex items-center justify-center text-xs font-bold border;
+    border-color: var(--radio-light-gray);
+  }
+  
+  .on-air-green {
+    background: hsl(120, 100%, 33%);
+    color: white;
+  }
+  
+  .stand-by-yellow {
+    background: hsl(45, 100%, 40%);
+    color: black;
+  }
+  
+  .gauge-container {
+    @apply relative;
+    width: 200px;
+    height: 120px;
+  }
+  
+  .gauge-arc {
+    stroke: var(--radio-gray);
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .gauge-needle {
+    stroke: var(--radio-red);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  
+  .linear-gauge {
+    @apply rounded-sm relative;
+    background: linear-gradient(to right, var(--radio-gray) 0%, var(--radio-gray) 100%);
+    border: 1px solid #555;
+  }
+  
+  .linear-gauge-fill {
+    @apply absolute;
+    background: var(--radio-red);
+    border-radius: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
