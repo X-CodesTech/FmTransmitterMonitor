@@ -23,11 +23,11 @@ export class MemStorage implements IStorage {
     
     // Initialize with default transmitter data
     this.createTransmitterData({
-      forwardPower: 1500,
-      reflectedPower: 0,
-      frequency: 92.40,
-      rfEfficiency: 94.5,
-      targetPower: 1500,
+      forwardPower: 2700,
+      reflectedPower: 12,
+      frequency: 93.4,
+      rfEfficiency: 87,
+      targetPower: 2700,
       isOnAir: true,
       timestamp: Date.now(),
     });

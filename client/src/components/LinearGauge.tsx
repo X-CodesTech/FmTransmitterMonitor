@@ -41,7 +41,13 @@ export function LinearGauge({ value, min, max, title, scalePoints }: LinearGauge
         </div>
       </div>
       <div className="text-center text-white text-2xl font-bold font-mono">
-        {typeof value === "number" ? value.toFixed(title === "Frequency" ? 2 : 1) : value}
+        {typeof value === "number" ? 
+          (title === "Frequency" ? 
+            parseFloat(value.toFixed(2)).toString() : 
+            value.toFixed(1)
+          ) : 
+          value
+        }
       </div>
     </div>
   );

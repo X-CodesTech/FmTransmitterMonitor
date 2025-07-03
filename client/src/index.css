@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  overflow: auto;
+  height: auto;
+  min-height: 100vh;
+}
+
+#root {
+  overflow: auto;
+  height: auto;
+  min-height: 100vh;
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(20, 14.3%, 4.1%);
@@ -133,5 +145,18 @@
     border-radius: 2px;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  @keyframes onair-blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    75%, 100% {
+      opacity: 0.4;
+    }
+  }
+
+  .onair-blink {
+    animation: onair-blink 3s infinite ease-in-out;
   }
 }

@@ -6,6 +6,7 @@ interface MeterProps {
   max: number;
   title: string;
   unit?: string;
+  scaleLabels?: string[];
 }
 
 // Design 1: Classic Analog VU Meter Style
@@ -93,24 +94,24 @@ export function ClassicAnalogMeter({ value, min, max, title, unit = "" }: MeterP
 }
 
 // Design 2: Digital Bar Graph Style
-export function DigitalBarMeter({ value, min, max, title, unit = "" }: MeterProps) {
+export function DigitalBarMeter({ value, min, max, title, unit = "", scaleLabels }: MeterProps) {
   const percentage = useMemo(() => {
     return ((value - min) / (max - min)) * 100;
   }, [value, min, max]);
 
   const segments = 40;
   const filledSegments = Math.floor((percentage / 100) * segments);
+  const defaultLabels = ["0", "500", "1000", "1500", "2000"];
+  const labels = scaleLabels || defaultLabels;
 
   return (
-    <div className="bg-[var(--radio-panel)] p-6 rounded border border-gray-600">
+    <div className="bg-[var(--radio-panel)] p-6 rounded border border-gray-600 ml-[0px] mr-[0px] mt-[8px] mb-[8px] pl-[19px] pr-[19px] pt-[0px] pb-[0px]">
       <h3 className="text-base mb-4 text-[var(--radio-yellow)] font-bold text-center">{title}</h3>
       <div className="mb-4">
         <div className="flex justify-between text-sm text-gray-400 mb-2">
-          <span>0</span>
-          <span>500</span>
-          <span>1000</span>
-          <span>1500</span>
-          <span>2000</span>
+          {labels.map((label, index) => (
+            <span key={index}>{label}</span>
+          ))}
         </div>
         <div className="flex gap-1 h-8 items-end">
           {Array.from({ length: segments }, (_, i) => {
